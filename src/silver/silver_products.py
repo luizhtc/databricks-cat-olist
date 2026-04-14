@@ -1,6 +1,6 @@
 # Databricks notebook source
 from pyspark.sql.functions import col
-from utils import read_from_bronze, parse_timestamp
+from utils import read_from_bronze
 
 # COMMAND ----------
 
