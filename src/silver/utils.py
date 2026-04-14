@@ -1,5 +1,5 @@
 from pyspark.sql import DataFrame, Column, SparkSession
-from pyspark.sql.functions import coalesce, to_timestamp
+from pyspark.sql.functions import coalesce, try_to_timestamp, lit
 
 def read_from_bronze(table: str, spark: SparkSession | None = None) -> DataFrame:
     """Reads a table from the Catalog 'cat_olist' and Schema 'sch_bronze'
@@ -32,4 +32,4 @@ def parse_timestamp(column: Column):
         Column: The parsed column with the timestamp information or NULL in case of parsing failure.
     """
     FORMATS = ["yyyy-MM-dd HH:mm:ss"]
-    return coalesce(*[to_timestamp(column, fmt) for fmt in FORMATS])
+    return coalesce(*[try_to_timestamp(column, lit(fmt)) for fmt in FORMATS])
