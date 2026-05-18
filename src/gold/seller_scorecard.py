@@ -1,6 +1,14 @@
 # Databricks notebook source
 from utils import read_from_silver
-from pyspark.sql.functions import col, countDistinct, sum as _sum, count as _count, when, round as _round, avg
+from pyspark.sql.functions import (
+    col,
+    countDistinct,
+    sum as _sum,
+    count as _count,
+    when,
+    round as _round,
+    avg,
+)
 
 # COMMAND ----------
 
